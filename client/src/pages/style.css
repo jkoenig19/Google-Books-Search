@@ -1,0 +1,9 @@
+.searchForm {
+    border: 1px #DDDDDD solid;
+    border-radius: 4px;
+    padding-top: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 50px;
+    margin-bottom: 32px;
+}
