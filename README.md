@@ -13,4 +13,4 @@ Enter a book title to search for on the search page. The results can be saved to
 This app is available at https://floating-spire-41797.herokuapp.com/.
 
 ## Technologies Used in the App
-This app is built using React.
+This app is built using React. It uses the Express, Mongoose, and Axios npm packages. The database used in this application is MongoDB.
