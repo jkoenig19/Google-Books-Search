@@ -41,30 +41,37 @@ class Saved extends Component {
         </Row>
         <Row>
           <Col size="md-12">
-          {this.state.books.length ? (
-              <List>
-                {this.state.books.map(book => (
-                  <ListItem key={book._id}>
-                    <p>{book.title}</p>
-                    <div className="d-inline-flex">
-                      <p>Written By&nbsp;</p>
-                      {book.authors.map(author => 
-                        <p>{author}&nbsp;</p>
-                      )}
-                    </div>
-                    <p>{book.description}</p>
-                    {book.image ? <img alt={book.title} src={book.image}/> : null}
-                    <div className="float-right">
-                      <a className="btn btn-info mr-1" href={book.link}>View</a>
-                      <DeleteBtn className="btn btn-danger" onClick={() => this.handleBookDelete(book._id)} />
-                    </div>
-                  </ListItem>
-                ))}
-              </List>
-            ) : (
-              <h3>No Results to Display</h3>
-            )}
-
+            <div className="searchForm">
+            <h5>Saved Books</h5>
+            {this.state.books.length ? (
+                <List>
+                  {this.state.books.map(book => (
+                    <ListItem key={book._id}>
+                      <div className="float-right">
+                        <a className="btn btn-info mr-1" href={book.link}>View</a>
+                        <DeleteBtn className="btn btn-danger" onClick={() => this.handleBookDelete(book._id)} />
+                      </div>
+                      <h5>{book.title}&nbsp;</h5>
+                      <div className="d-inline-flex">
+                        <p>Written By&nbsp;</p>
+                        {book.authors.map(author => 
+                          <p>{author}&nbsp;</p>
+                        )}
+                      </div>
+                      <div></div>
+                      <div className="d-inline-flex">
+                        <div>
+                          {book.image ? <img alt={book.title} src={book.image}/> : null}
+                        </div>
+                        <p className="ml-3">{book.description}</p>
+                      </div>
+                    </ListItem>
+                  ))}
+                </List>
+              ) : (
+                <h3>No Results to Display</h3>
+              )}
+            </div>
           </Col>
         </Row>
       </Container>

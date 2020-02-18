@@ -57,7 +57,7 @@ class Search extends Component {
               <p className="lead">Search for and Save Books Of Interest</p>
             </Jumbotron>
             <form className="searchForm">
-              <p>Book Search</p>
+              <h5>Book Search</h5>
               <br></br>
               <p>Book</p>
               <Form
@@ -70,29 +70,37 @@ class Search extends Component {
             </form>
           </Col>
           <Col size="md-12">
-            {this.state.books.length ? (
-              <List>
-                {this.state.books.map(book => (
-                  <ListItem key={book.id}>
-                    <p>{book.volumeInfo.title}</p>
-                    <div className="d-inline-flex">
-                      <p>Written By&nbsp;</p>
-                      {book.volumeInfo.authors.map(author => 
-                        <p>{author}&nbsp;</p>
-                      )}
-                    </div>
-                    <p>{book.volumeInfo.description}</p>
-                    {book.volumeInfo.imageLinks ? <img alt={book.volumeInfo.title} src={book.volumeInfo.imageLinks.thumbnail}/> : null}
-                    <div className="float-right">
-                      <a className="btn btn-info mr-1" href={book.volumeInfo.infoLink}>View</a>
-                      <SaveBtn className="btn btn-success" onClick={() => this.handleBookSave(book.id)} />
-                    </div>
-                  </ListItem>
-                ))}
-              </List>
-            ) : (
-              <h3>No Results to Display</h3>
-            )}
+            <div className="searchForm">
+              <h5>Results</h5>
+              {this.state.books.length ? (
+                <List>
+                  {this.state.books.map(book => (
+                    <ListItem key={book.id}>
+                      <div className="float-right">
+                        <a className="btn btn-info mr-1" href={book.volumeInfo.infoLink}>View</a>
+                        <SaveBtn className="btn btn-success" onClick={() => this.handleBookSave(book.id)} />
+                      </div>
+                      <h5>{book.volumeInfo.title}</h5>
+                      <div className="d-inline-flex">
+                        <p>Written By&nbsp;</p>
+                        {book.volumeInfo.authors.map(author => 
+                          <p>{author}&nbsp;</p>
+                        )}
+                      </div>
+                      <div></div>
+                      <div className="d-inline-flex">
+                        <div>
+                          {book.volumeInfo.imageLinks ? <img alt={book.volumeInfo.title} src={book.volumeInfo.imageLinks.thumbnail}/> : null}
+                        </div>
+                        <p className="ml-3">{book.volumeInfo.description}</p>
+                      </div>
+                    </ListItem>
+                  ))}
+                </List>
+              ) : (
+                <h3>No Results to Display</h3>
+              )}
+            </div>
           </Col>
         </Row>
       </Container>
